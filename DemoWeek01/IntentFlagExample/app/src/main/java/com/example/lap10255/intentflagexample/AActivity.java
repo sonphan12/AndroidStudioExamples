@@ -7,39 +7,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
-public class AActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btnToA;
-    Button btnToB;
-    Button btnToC;
-    Button btnToD;
-    CheckBox chkAddNewTask;
-    CheckBox chkAddClearTask;
-    CheckBox chkAddClearTop;
-    CheckBox chkAddSingleTop;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class AActivity extends AppCompatActivity {
+    @BindView(R.id.btnToA) Button btnToA;
+    @BindView(R.id.btnToB) Button btnToB;
+    @BindView(R.id.btnToC)Button btnToC;
+    @BindView(R.id.btnToD)Button btnToD;
+
+    @BindView(R.id.chkAddNewTask) CheckBox chkAddNewTask;
+    @BindView(R.id.chkAddClearTask) CheckBox chkAddClearTask;
+    @BindView(R.id.chkAddClearTop) CheckBox chkAddClearTop;
+    @BindView(R.id.chkAddSingleTop) CheckBox chkAddSingleTop;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_a);
 
-        btnToA = findViewById(R.id.btnToA);
-        btnToB = findViewById(R.id.btnToB);
-        btnToC = findViewById(R.id.btnToC);
-        btnToD = findViewById(R.id.btnToD);
-
-        chkAddNewTask = findViewById(R.id.chkAddNewTask);
-        chkAddClearTask = findViewById(R.id.chkAddClearTask);
-        chkAddClearTop = findViewById(R.id.chkAddClearTop);
-        chkAddSingleTop = findViewById(R.id.chkAddSingleTop);
-
-        btnToA.setOnClickListener(this);
-        btnToB.setOnClickListener(this);
-        btnToC.setOnClickListener(this);
-        btnToD.setOnClickListener(this);
+        ButterKnife.bind(this);
 
     }
 
-    @Override
-    public void onClick(View v) {
+    @OnClick({R.id.btnToA, R.id.btnToB, R.id.btnToC, R.id.btnToD})
+    public void buttonClicked(View v){
         Intent i;
         int flags = 0;
         if (chkAddNewTask.isChecked()) {

@@ -51,7 +51,7 @@ public class DownloadService extends Service {
             String fileName = URLUtil.guessFileName(mURL, null, null);
             File download = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
             OutputStream output = new FileOutputStream(download);
-            byte data[] = new byte[51200];
+            byte data[] = new byte[1024];
             long total = 0;
             while ((count = input.read(data)) != -1){
                 total += count;
