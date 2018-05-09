@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 
 public class AActivity extends AppCompatActivity implements View.OnClickListener {
+    Button btnToA;
     Button btnToB;
     Button btnToC;
     Button btnToD;
@@ -20,6 +21,7 @@ public class AActivity extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_a);
 
+        btnToA = findViewById(R.id.btnToA);
         btnToB = findViewById(R.id.btnToB);
         btnToC = findViewById(R.id.btnToC);
         btnToD = findViewById(R.id.btnToD);
@@ -29,6 +31,7 @@ public class AActivity extends AppCompatActivity implements View.OnClickListener
         chkAddClearTop = findViewById(R.id.chkAddClearTop);
         chkAddSingleTop = findViewById(R.id.chkAddSingleTop);
 
+        btnToA.setOnClickListener(this);
         btnToB.setOnClickListener(this);
         btnToC.setOnClickListener(this);
         btnToD.setOnClickListener(this);
@@ -53,6 +56,13 @@ public class AActivity extends AppCompatActivity implements View.OnClickListener
         }
 
         switch (v.getId()){
+            case R.id.btnToA:
+                i = new Intent(AActivity.this, AActivity.class);
+                if (flags != 0){
+                    i.setFlags(flags);
+                }
+                startActivity(i);
+                break;
             case R.id.btnToB:
                 i = new Intent(AActivity.this, BActivity.class);
                 if (flags != 0){

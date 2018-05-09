@@ -11,6 +11,8 @@ public class DActivity extends AppCompatActivity implements View.OnClickListener
     Button btnToA;
     Button btnToB;
     Button btnToC;
+    Button btnToD;
+
     CheckBox chkAddNewTask;
     CheckBox chkAddClearTask;
     CheckBox chkAddClearTop;
@@ -24,6 +26,7 @@ public class DActivity extends AppCompatActivity implements View.OnClickListener
         btnToB = findViewById(R.id.btnToB);
         btnToC = findViewById(R.id.btnToC);
         btnToA = findViewById(R.id.btnToA);
+        btnToD = findViewById(R.id.btnToD);
 
         chkAddNewTask = findViewById(R.id.chkAddNewTask);
         chkAddClearTask = findViewById(R.id.chkAddClearTask);
@@ -33,6 +36,7 @@ public class DActivity extends AppCompatActivity implements View.OnClickListener
         btnToB.setOnClickListener(this);
         btnToC.setOnClickListener(this);
         btnToA.setOnClickListener(this);
+        btnToD.setOnClickListener(this);
     }
 
     @Override
@@ -68,6 +72,13 @@ public class DActivity extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.btnToA:
                 i = new Intent(DActivity.this, AActivity.class);
+                if (flags != 0){
+                    i.setFlags(flags);
+                }
+                startActivity(i);
+                break;
+            case R.id.btnToD:
+                i = new Intent(DActivity.this, DActivity.class);
                 if (flags != 0){
                     i.setFlags(flags);
                 }

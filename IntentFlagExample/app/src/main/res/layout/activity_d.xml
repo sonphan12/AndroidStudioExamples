@@ -31,6 +31,11 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:text="To C"/>
+    <Button
+        android:id="@+id/btnToD"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="To D"/>
 
     <CheckBox
         android:id="@+id/chkAddNewTask"

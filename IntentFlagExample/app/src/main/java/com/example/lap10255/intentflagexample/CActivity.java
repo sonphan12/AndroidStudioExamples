@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 public class CActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnToA;
     Button btnToB;
+    Button btnToC;
     Button btnToD;
     CheckBox chkAddNewTask;
     CheckBox chkAddClearTask;
@@ -23,6 +24,7 @@ public class CActivity extends AppCompatActivity implements View.OnClickListener
 
         btnToA = findViewById(R.id.btnToA);
         btnToB = findViewById(R.id.btnToB);
+        btnToC = findViewById(R.id.btnToC);
         btnToD = findViewById(R.id.btnToD);
 
         chkAddNewTask = findViewById(R.id.chkAddNewTask);
@@ -34,6 +36,7 @@ public class CActivity extends AppCompatActivity implements View.OnClickListener
         btnToA.setOnClickListener(this);
         btnToB.setOnClickListener(this);
         btnToD.setOnClickListener(this);
+        btnToC.setOnClickListener(this);
     }
 
     @Override
@@ -62,6 +65,13 @@ public class CActivity extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.btnToB:
                 i = new Intent(CActivity.this, BActivity.class);
+                if (flags != 0){
+                    i.setFlags(flags);
+                }
+                startActivity(i);
+                break;
+            case R.id.btnToC:
+                i = new Intent(CActivity.this, CActivity.class);
                 if (flags != 0){
                     i.setFlags(flags);
                 }
