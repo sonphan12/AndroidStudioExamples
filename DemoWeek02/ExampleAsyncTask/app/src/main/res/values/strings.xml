@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ExampleAsyncTask</string>
+    <string name="download">download</string>
+    <string name="hint">Main UI isn\'t blocked, you can do what ever you want down here</string>
+    <string name="add">+</string>
+    <string name="equal">=</string>
+    <string name="calculate">Calculate</string>
+</resources>
