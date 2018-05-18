@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ExampleThreadExecutor</string>
+    <string name="introduce">Trong app này chúng ta sẽ gọi thi thực thi 10 tác vụ. Truyền 10 tác vụ đó vào một ThreadPool có fix size là 5.</string>
+    <string name="execute">Execute 10 task</string>
+</resources>
