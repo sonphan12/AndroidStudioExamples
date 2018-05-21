@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Example RxJava</string>
+    <string name="hint">Nhập các số để emit sang theo dạng a, b, c, ...</string>
+    <string name="emit">emit</string>
+    <string name="result">Các số chẵn là:</string>
+</resources>
