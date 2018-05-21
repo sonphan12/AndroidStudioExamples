@@ -40,8 +40,7 @@ public class MainActivity extends AppCompatActivity {
             String input = edtInput.getText().toString();
             String[] inputArray = input.split(",");
             // Create observable
-            Observable observable = Observable.just(Arrays.asList(inputArray))
-                    .flatMap(Observable::fromIterable)
+            Observable observable = Observable.fromArray(inputArray)
                     .map(element -> Integer.parseInt(element.trim()))
                     .filter(element -> element % 2 == 0)
                     .subscribeOn(Schedulers.newThread())
