@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ExampleRxJavaDownload</string>
+    <string name="download1">Download File 1</string>
+    <string name="download2">Download File 2</string>
+</resources>
