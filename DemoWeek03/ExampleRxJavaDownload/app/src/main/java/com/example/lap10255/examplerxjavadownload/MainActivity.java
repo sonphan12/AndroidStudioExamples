@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             String fileString = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/file1.mp4";
             disposable.add(DownloadObservable.downloadFile(URL_STRING1, fileString)
                     .subscribeOn(Schedulers.io())
-                    .subscribeOn(AndroidSchedulers.mainThread())
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new DownloadConsumer(progress1)));
 
         });
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             String fileString = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/file2.mp4";
             disposable.add(DownloadObservable.downloadFile(URL_STRING2, fileString)
                     .subscribeOn(Schedulers.io())
-                    .subscribeOn(AndroidSchedulers.mainThread())
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new DownloadConsumer(progress2)));
 
         });
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             String fileString = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/file3.mp4";
             disposable.add(DownloadObservable.downloadFile(URL_STRING3, fileString)
                     .subscribeOn(Schedulers.io())
-                    .subscribeOn(AndroidSchedulers.mainThread())
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new DownloadConsumer(progress3)));
 
         });
