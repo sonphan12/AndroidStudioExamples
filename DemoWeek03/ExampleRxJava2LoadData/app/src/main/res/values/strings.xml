@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">ExampleRxJava2LoadData</string>
+    <string name="sample_info_local">[{\"name\": \"Le Van Tai Em\", \"age\": 14},{\"name\": \"Le Van Tai Anh\", \"age\": 22}]</string>
+    <string name="concat">Concat</string>
+    <string name="merge">Merge</string>
+    <string name="concat_with_filter"><![CDATA[Concat with filter age >10]]></string>
+    <string name="zip">Zip</string>
+    <string name="combine_latest">Combine latest</string>
+    <string name="flatmap">Flatmap</string>
+    <string name="clear">Clear list view</string>
 </resources>
