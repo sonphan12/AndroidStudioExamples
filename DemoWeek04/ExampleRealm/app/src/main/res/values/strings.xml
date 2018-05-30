@@ -4,4 +4,7 @@
     <string name="show_all_user">Show all user</string>
     <string name="delete_hint">Long click to delete user</string>
     <string name="unknown">Unknown</string>
+    <string name="name">Name:</string>
+    <string name="sex">Gender:</string>
+    <string name="update_hint">Click to update user info</string>
 </resources>

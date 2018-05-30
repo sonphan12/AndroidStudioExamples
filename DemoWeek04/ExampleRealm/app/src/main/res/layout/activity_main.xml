@@ -7,6 +7,12 @@
     android:orientation="vertical"
     android:padding="10dp"
     tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/update_hint"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,12 +21,8 @@
     <ListView
         android:id="@+id/lvUser"
         android:layout_width="match_parent"
-        android:layout_height="300dp"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/show_all_user"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
     <Button
         android:id="@+id/btnAddUser"

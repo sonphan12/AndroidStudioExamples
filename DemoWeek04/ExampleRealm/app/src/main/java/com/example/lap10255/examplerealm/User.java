@@ -8,6 +8,15 @@ public class User extends RealmObject {
     @Required
     @PrimaryKey
     private String id;
+
+    public User(String name, String sex) {
+        this.name = name;
+        this.sex = sex;
+    }
+
+    public User() {
+    }
+
     @Required
     private String name;
     private String sex;
