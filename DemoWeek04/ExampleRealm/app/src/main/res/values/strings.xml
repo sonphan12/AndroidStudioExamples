@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ExampleRealm</string>
+    <string name="add_user">Add user</string>
+    <string name="show_all_user">Show all user</string>
+    <string name="delete_hint">Long click to delete user</string>
+    <string name="unknown">Unknown</string>
+</resources>
