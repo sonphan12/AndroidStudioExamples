@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ExampleKeyStore</string>
+    <string name="key_alias">Key alias:</string>
+    <string name="alias_hint">Enter key alias</string>
+    <string name="generate_key">Generate key</string>
+    <string name="text_hint">Enter a text</string>
+    <string name="encrypted_hint">Encrypted text</string>
+    <string name="decrypted_hint">Decrypted text:</string>
+    <string name="alias">Alias</string>
+    <string name="delete">Delete key</string>
+    <string name="encrypt">Encrypt</string>
+    <string name="decrypt">Decrypt</string>
+</resources>

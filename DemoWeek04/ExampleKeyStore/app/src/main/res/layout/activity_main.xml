@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".MainActivity">
+    <EditText
+        android:id="@+id/edtAlias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/alias_hint"/>
+    <Button
+        android:id="@+id/btnGenerate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/generate_key"/>
+    <EditText
+        android:id="@+id/edtText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/text_hint"/>
+    <EditText
+        android:id="@+id/txtEncrypted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/encrypted_hint"
+        android:singleLine="true" />
+    <EditText
+        android:id="@+id/txtDecrypted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/decrypted_hint"
+        android:singleLine="true" />
+    <ListView
+        android:id="@+id/lvKeys"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
