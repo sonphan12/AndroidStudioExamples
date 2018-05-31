@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ExampleRxjava2OtherOperator</string>
+    <string name="take_until">Take until 5</string>
+    <string name="repeat_when">Repeat when</string>
+    <string name="retry_when">Retry when</string>
+</resources>
