@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Job implements Serializable {
+public class Job {
 
     @SerializedName("id")
     @Expose

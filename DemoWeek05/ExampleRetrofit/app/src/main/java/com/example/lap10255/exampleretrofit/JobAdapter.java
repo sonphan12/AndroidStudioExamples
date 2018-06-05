@@ -30,8 +30,7 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(ctx).inflate(R.layout.job_item, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -46,9 +45,8 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
 
         holder.itemView.setOnClickListener(v -> {
             Intent i = new Intent(ctx, JobDetailActivity.class);
-            i.putExtra("job", job);
             ctx.startActivity(i);
-//            EventBus.getDefault().postSticky(job);
+            EventBus.getDefault().postSticky(job);
         });
     }
 

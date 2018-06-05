@@ -27,11 +27,6 @@ public class JobDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_job_detail);
         addControls();
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            Job job = (Job) bundle.getSerializable("job");
-            updateUI(job);
-        }
     }
 
     private void addControls() {
@@ -48,14 +43,17 @@ public class JobDetailActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        EventBus.getDefault().register(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
-    public void updateUI(Job job) {
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void onJobEvent(Job job) {
         Glide.with(this).load(job.getCompanyLogo()).into(imgLogo);
         txtTitle.setText(job.getTitle());
         txtType.setText(job.getType());
