@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ExampleRetrofit</string>
+    <string name="get_all_jobs">Get all jobs</string>
+    <string name="get_from_some_info">Get from some info</string>
+    <string name="text_holder">Text Holder</string>
+    <string name="title_holder">Title Holder</string>
+    <string name="type_holder">Type Holder</string>
+    <string name="location_holder">Location Holder</string>
+    <string name="company_holder">Company Holder</string>
+    <string name="created_at_holder">Created at Holder</string>
+</resources>
