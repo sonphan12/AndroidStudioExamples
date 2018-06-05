@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp"
+    tools:context=".JobDetailActivity">
 
     <ImageView
         android:id="@+id/imgLogo"
@@ -57,10 +58,20 @@
         android:layout_marginTop="5dp"
         android:text="@string/created_at_holder"/>
     <View
+        android:id="@+id/separator"
         android:layout_below="@id/imgLogo"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
         android:background="#000000"
         android:layout_height="1dp"/>
+    <ScrollView
+        android:layout_below="@id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/txtDescription"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
 
 </RelativeLayout>

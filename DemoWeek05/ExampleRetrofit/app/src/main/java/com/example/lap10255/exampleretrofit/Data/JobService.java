@@ -15,5 +15,5 @@ public interface JobService {
     @GET("/positions.json")
     Call<ArrayList<Job>> getJobFromInfo(@Query("description") String description,
                                         @Query("location") String location,
-                                        @Query("full_time") Boolean fullTime);
+                                        @Query("full_time") String fullTime);
 }

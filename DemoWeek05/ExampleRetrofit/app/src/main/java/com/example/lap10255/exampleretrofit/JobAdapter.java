@@ -1,6 +1,8 @@
 package com.example.lap10255.exampleretrofit;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +13,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.lap10255.exampleretrofit.Model.Job;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 
@@ -39,6 +43,13 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
         holder.txtLocation.setText(job.getLocation());
         holder.txtCompany.setText(job.getCompany());
         holder.txtCreatedAt.setText(job.getCreatedAt());
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent i = new Intent(ctx, JobDetailActivity.class);
+            i.putExtra("job", job);
+            ctx.startActivity(i);
+//            EventBus.getDefault().postSticky(job);
+        });
     }
 
     @Override

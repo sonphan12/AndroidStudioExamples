@@ -2,7 +2,9 @@ package com.example.lap10255.exampleretrofit.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Job {
+import java.io.Serializable;
+
+public class Job implements Serializable {
 
     @SerializedName("id")
     @Expose

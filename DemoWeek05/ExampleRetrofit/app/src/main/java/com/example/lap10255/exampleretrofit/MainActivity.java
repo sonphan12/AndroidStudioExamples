@@ -7,9 +7,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lap10255.exampleretrofit.Data.JobService;
@@ -90,23 +92,28 @@ public class MainActivity extends AppCompatActivity {
         edtDescription.setHint("Enter job description");
         EditText edtLocation = new EditText(this);
         edtLocation.setHint("Enter job location");
-        Spinner spinner = new Spinner(this);
-        ArrayList<String> typeChoice = new ArrayList<>();
-        typeChoice.add("Full-time");
-        typeChoice.add("Part-time");
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, typeChoice);
-        spinner.setAdapter(spinnerAdapter);
+        LinearLayout childLayout = new LinearLayout(this);
+        childLayout.setOrientation(LinearLayout.HORIZONTAL);
+        TextView txtAskOnlyFulltime = new TextView(this);
+        txtAskOnlyFulltime.setText(R.string.only_fulltime);
+        CheckBox chkOnlyFulltime = new CheckBox(this);
+
 
         layout.addView(edtDescription);
         layout.addView(edtLocation);
-        layout.addView(spinner);
+        childLayout.addView(txtAskOnlyFulltime);
+        childLayout.addView(chkOnlyFulltime);
+        layout.addView(childLayout);
 
         builder.setView(layout);
 
+        String queryDescription = edtDescription.getText().toString().isEmpty() ? null : edtDescription.getText().toString();
+        String queryLocation = edtLocation.getText().toString().isEmpty() ? null : edtLocation.getText().toString();
+        String queryType = chkOnlyFulltime.isChecked() ? "true" : null;
         builder.setPositiveButton("Query", (dialog, which) -> queryJobs(
-                edtDescription.getText().toString(),
-                edtLocation.getText().toString(),
-                Boolean.parseBoolean(spinner.getSelectedItem().toString())
+                queryDescription,
+                queryLocation,
+                queryType
         ));
         builder.setNegativeButton("Cancel", ((dialog, which) -> dialog.cancel()));
 
@@ -114,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void queryJobs(String description, String location, Boolean type) {
+    private void queryJobs(String description, String location, String type) {
         jobService.getJobFromInfo(description, location, type).enqueue(new Callback<ArrayList<Job>>() {
             @Override
             public void onResponse(Call<ArrayList<Job>> call, Response<ArrayList<Job>> response) {
