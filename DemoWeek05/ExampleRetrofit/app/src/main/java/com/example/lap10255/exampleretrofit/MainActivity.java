@@ -107,14 +107,16 @@ public class MainActivity extends AppCompatActivity {
 
         builder.setView(layout);
 
-        String queryDescription = edtDescription.getText().toString().isEmpty() ? null : edtDescription.getText().toString();
-        String queryLocation = edtLocation.getText().toString().isEmpty() ? null : edtLocation.getText().toString();
-        String queryType = chkOnlyFulltime.isChecked() ? "true" : null;
-        builder.setPositiveButton("Query", (dialog, which) -> queryJobs(
-                queryDescription,
-                queryLocation,
-                queryType
-        ));
+        builder.setPositiveButton("Query", (dialog, which) -> {
+            String queryDescription = edtDescription.getText().toString().isEmpty() ? null : edtDescription.getText().toString();
+            String queryLocation = edtLocation.getText().toString().isEmpty() ? null : edtLocation.getText().toString();
+            String queryType = chkOnlyFulltime.isChecked() ? "true" : null;
+            queryJobs(
+                    queryDescription,
+                    queryLocation,
+                    queryType
+            );
+        });
         builder.setNegativeButton("Cancel", ((dialog, which) -> dialog.cancel()));
 
         builder.show();
