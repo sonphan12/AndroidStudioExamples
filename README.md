@@ -1,3 +1,3 @@
 # AndroidStudioExamples
 
-DemoWeek05/ExampleRetrofit --> Retrofit, EventBus, Dagger2
+DemoWeek05/ExampleRetrofit --> Retrofit, Glide, EventBus, Dagger2
