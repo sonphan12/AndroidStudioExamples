@@ -7,11 +7,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.lap10255.exampleretrofit.Components.DaggerJobDetailComponent;
+import com.example.lap10255.exampleretrofit.Components.JobDetailComponent;
 import com.example.lap10255.exampleretrofit.Model.Job;
+import com.example.lap10255.exampleretrofit.Modules.EventBusModule;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import javax.inject.Inject;
 
 public class JobDetailActivity extends AppCompatActivity {
     ImageView imgLogo;
@@ -21,12 +26,23 @@ public class JobDetailActivity extends AppCompatActivity {
     TextView txtCompany;
     TextView txtCreatedAt;
     TextView txtDescription;
+    @Inject
+    EventBus eventBus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_detail);
+
+        inject();
         addControls();
 
+    }
+
+    private void inject() {
+        JobDetailComponent jobDetailComponent = DaggerJobDetailComponent.builder()
+                .eventBusModule(new EventBusModule())
+                .build();
+        jobDetailComponent.injectJobDetailActivity(this);
     }
 
     private void addControls() {
@@ -43,13 +59,13 @@ public class JobDetailActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        EventBus.getDefault().register(this);
+        eventBus.register(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        EventBus.getDefault().unregister(this);
+        eventBus.unregister(this);
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)

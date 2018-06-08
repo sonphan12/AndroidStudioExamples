@@ -68,7 +68,7 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
         TextView txtCompany;
         TextView txtCreatedAt;
 
-        public ViewHolder(@NonNull View v) {
+        ViewHolder(@NonNull View v) {
             super(v);
             this.imgLogo = v.findViewById(R.id.imgLogo);
             this.txtTitle = v.findViewById(R.id.txtTitle);

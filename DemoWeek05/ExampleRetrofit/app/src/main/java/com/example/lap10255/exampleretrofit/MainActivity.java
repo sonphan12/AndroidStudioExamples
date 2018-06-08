@@ -5,22 +5,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lap10255.exampleretrofit.Components.DaggerMainActivityComponent;
+import com.example.lap10255.exampleretrofit.Components.MainActivityComponent;
 import com.example.lap10255.exampleretrofit.Data.JobService;
 import com.example.lap10255.exampleretrofit.Model.Job;
-import com.example.lap10255.exampleretrofit.Util.Util;
+import com.example.lap10255.exampleretrofit.Modules.JobAdapterModule;
+import com.example.lap10255.exampleretrofit.Modules.JobServiceModule;
+import com.example.lap10255.exampleretrofit.Modules.LinearLayoutManagerModule;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+
+import javax.inject.Inject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,24 +30,34 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView rvJob;
+    @Inject
     JobAdapter adapter;
     Button btnGetAll;
     Button btnGetFromInfo;
+    @Inject
+    LinearLayoutManager layoutManager;
+    @Inject
     JobService jobService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        jobService = Util.getJobService();
-
+        inject();
         addControls();
+    }
+
+    private void inject() {
+        MainActivityComponent mainActivityComponent = DaggerMainActivityComponent.builder()
+                .jobServiceModule(new JobServiceModule())
+                .jobAdapterModule(new JobAdapterModule(this))
+                .linearLayoutManagerModule(new LinearLayoutManagerModule(this))
+                .build();
+        mainActivityComponent.injectMainActivity(this);
     }
 
     private void addControls() {
         rvJob = findViewById(R.id.rvJob);
-        adapter = new JobAdapter(this);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rvJob.setLayoutManager(layoutManager);
         rvJob.setAdapter(adapter);
 
