@@ -19,6 +19,11 @@ public class UsecaseSearch implements UseCase<String, Observable<List<Contact>>>
 
     @Override
     public Observable<List<Contact>> executeUsecase(Context ctx, String param) {
-        return contactRepository.getSearchContact(ctx, param);
+        return contactRepository
+                .getSearchContact(ctx, param)
+                .flatMapIterable(item -> item)
+                .concatMap(item -> Observable.just(new Contact(item.getName(), item.isHasPhoneNumber(), item.getPhoneNumber())))
+                .toList()
+                .toObservable();
     }
 }

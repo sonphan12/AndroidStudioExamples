@@ -5,8 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.provider.ContactsContract;
 
-import com.sonphan12.exampleclean.domain.Contact;
-import com.sonphan12.exampleclean.utils.ApplySchedulers;
+import com.sonphan12.exampleclean.domain.ContactModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +24,8 @@ public class ContactRepository {
     private ContactRepository() {
     }
 
-    public Observable<List<Contact>> getAllContact(Context ctx) {
-        ArrayList<Contact> listContact = new ArrayList<>();
+    public Observable<List<ContactModel>> getAllContact(Context ctx) {
+        ArrayList<ContactModel> listContactModel = new ArrayList<>();
         ContentResolver cr = ctx.getContentResolver();
         Cursor cur = ctx.getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null,
                 null, null);
@@ -54,19 +53,19 @@ public class ContactRepository {
                             pCur.close();
                         }
                     }
-                    listContact.add(new Contact(name, hasPhoneNumber, phoneNumber));
+                    listContactModel.add(new ContactModel(name, hasPhoneNumber, phoneNumber));
                 }
             }
             if (cur != null) {
                 cur.close();
             }
-            emitter.onNext(listContact);
+            emitter.onNext(listContactModel);
             emitter.onComplete();
         });
     }
 
-    public Observable<List<Contact>> getSearchContact(Context ctx, String query) {
-        ArrayList<Contact> listContact = new ArrayList<>();
+    public Observable<List<ContactModel>> getSearchContact(Context ctx, String query) {
+        ArrayList<ContactModel> listContactModel = new ArrayList<>();
         ContentResolver cr = ctx.getContentResolver();
         String selection = ContactsContract.Contacts.DISPLAY_NAME + " LIKE \'%" + query + "%\'";
         Cursor cur = ctx.getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, selection,
@@ -79,6 +78,7 @@ public class ContactRepository {
                             ContactsContract.Contacts.DISPLAY_NAME));
                     String phoneNumber = "";
                     boolean hasPhoneNumber = false;
+
                     if (cur.getInt(cur.getColumnIndex(
                             ContactsContract.Contacts.HAS_PHONE_NUMBER)) > 0) {
                         hasPhoneNumber = true;
@@ -95,13 +95,13 @@ public class ContactRepository {
                             pCur.close();
                         }
                     }
-                    listContact.add(new Contact(name, hasPhoneNumber, phoneNumber));
+                    listContactModel.add(new ContactModel(name, hasPhoneNumber, phoneNumber));
                 }
             }
             if (cur != null) {
                 cur.close();
             }
-            emitter.onNext(listContact);
+            emitter.onNext(listContactModel);
             emitter.onComplete();
         });
     }

@@ -20,6 +20,11 @@ public class UsecaseAllContact implements UseCase<Void, Observable<List<Contact>
 
     @Override
     public Observable<List<Contact>> executeUsecase(Context ctx, Void param) {
-        return contactRepository.getAllContact(ctx);
+        return contactRepository
+                .getAllContact(ctx)
+                .flatMapIterable(item -> item)
+                .concatMap(item -> Observable.just(new Contact(item.getName(), item.isHasPhoneNumber(), item.getPhoneNumber())))
+                .toList()
+                .toObservable();
     }
 }
