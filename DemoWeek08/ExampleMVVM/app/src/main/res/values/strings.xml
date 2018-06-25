@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Example MVVM</string>
+    <string name="load">Load new stories</string>
+</resources>
